@@ -1,0 +1,15 @@
+[Unit]
+Description=Plant Sales App Backend
+After=network.target mariadb.service
+
+[Service]
+Type=simple
+User=t02
+WorkingDirectory=/home/t02/plant-sales-app/backend
+ExecStart=/home/t02/plant-sales-app/backend/venv/bin/uvicorn main:app --host 127.0.0.1 --port 8001
+Restart=always
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target
